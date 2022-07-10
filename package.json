@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "bin": {
+    "nodejs-study2": "www.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +14,7 @@
     "url": "git+https://github.com/yungit4455/nodejs-study2.git"
   },
   "author": "yungit4455",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/yungit4455/nodejs-study2/issues"
   },

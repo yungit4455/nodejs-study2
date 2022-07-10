@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // 모듈
 const express = require('express');
@@ -14,6 +14,5 @@ app.set('view engine', 'ejs');
 
 app.use('/', home); // use -> middleware 등록하는 method
 
-app.listen(PORT, () => {
-    console.log('Server Start');
-});
+
+module.exports = app;
