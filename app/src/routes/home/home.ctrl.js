@@ -1,14 +1,23 @@
 'use strict';
 
-const home = (req, res) => {
-    res.render('home/index');
+const output = {
+    home: (req, res) => {
+        res.render('home/index');
+    },
+    
+    login: (req, res) => {
+        res.render('home/login');
+    },
 };
 
-const login = (req, res) => {
-    res.render('home/login');
+// req: 프론트엔드에서 전달한 요청(request)한 데이터를 담아두는 변수
+const process = {
+    login: (req, res) => {
+        console.log(req.body);
+    },
 };
 
 module.exports = {
-    home: home, // 둘다 같은 의미
-    login,
+    output,
+    process,
 };

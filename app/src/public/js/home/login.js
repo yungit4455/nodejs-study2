@@ -1,7 +1,5 @@
 'use strict';
 
-const { post } = require("../../../home");
-
 const id = document.querySelector('#id');
 const password = document.querySelector('#password');
 const loginBtn = document.querySelector('button');
@@ -13,7 +11,6 @@ function login() {
         id: id.value,
         password: password.value,
     };
-
     // 객체 그대로 전송, JSON 포맷으로 전송 차이: JSON은 모든 부분이 문자열로 감싸여있다.
     // console.log(req, JSON.stringify(req));
     // body를 서버에 전달할 때는 POST 방식으로 전달해야 한다.
@@ -21,8 +18,8 @@ function login() {
     fetch('/login', {
         method: 'POST',
         headers: {
-            'Content-Type:': 'application/json',
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify(req),
-    })
+    });
 }
