@@ -21,5 +21,9 @@ function login() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(req),
-    });
+    })
+    .then((res) => res.json())
+    .then(console.log);
+    // then((res) => console.log(res)); 와 같다. 파라미터로 넘긴 값을 어떠한 함수 안의 파라미터로
+    // 다시 넘길 경우 생략할 수 있다.
 }
