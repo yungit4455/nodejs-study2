@@ -11,6 +11,7 @@ class User {
         const body = this.body;
         const { id, password } = UserStorage.getUserInfo(body.id);
 
+        // id: DB에 저장되어있는 id, body.id: Client가 입력한 id
         if (id) {
             if (id === body.id && password === body.password) {
                 return { success: true };
