@@ -23,7 +23,16 @@ function login() {
         body: JSON.stringify(req),
     })
     .then((res) => res.json())
-    .then(console.log);
+    .then((res) => {
+        if (res.success) {
+            location.href = '/';
+        } else {
+            alert(res.msg);
+        }
+    })
+    .catch((err) => {
+        console.error(new Error('로그인 도중 에러 발생!'));
+    });
     // then((res) => console.log(res)); 와 같다. 파라미터로 넘긴 값을 어떠한 함수 안의 파라미터로
     // 다시 넘길 경우 생략할 수 있다.
 }
