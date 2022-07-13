@@ -6,7 +6,8 @@ const loginBtn = document.querySelector('button');
 
 loginBtn.addEventListener('click', login);
 
-function login() {
+function login(event) {
+    event.preventDefault();
     const req = {
         id: id.value,
         password: password.value,
@@ -15,6 +16,7 @@ function login() {
     // console.log(req, JSON.stringify(req));
     // body를 서버에 전달할 때는 POST 방식으로 전달해야 한다.
     // 전달하는 데이터가 json임을 헤더로 전달해야 한다.
+    // fetch는 Promise를 반환한다.
     fetch('/login', {
         method: 'POST',
         headers: {
