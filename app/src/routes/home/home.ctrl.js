@@ -10,6 +10,10 @@ const output = {
     login: (req, res) => {
         res.render('home/login');
     },
+
+    register: (req, res) => {
+        res.render('home/register');
+    }
 };
 
 // req: 프론트엔드에서 전달한 요청(request)의 데이터를 담아두는 변수
