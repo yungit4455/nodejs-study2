@@ -1,19 +1,24 @@
 'use strict';
 
+const registerForm = document.querySelector('.register-form');
 const id = document.querySelector('#id');
 const name = document.querySelector('#name');
 const password = document.querySelector('#password');
 const confirmPassword = document.querySelector('#confirm-password');
-const registerBtn = document.querySelector('button');
 
-registerBtn.addEventListener('click', register);
+registerForm.addEventListener('submit', register);
 
-function register() {
+function register(event) {
+    event.preventDefault();
+
+    if (password.value !== confirmPassword.value) {
+        return alert('비밀번호가 일치하지 않습니다.');
+    }
+
     const req = {
         id: id.value,
         name: name.value,
         password: password.value,
-        confirmPassword: confirmPassword.value,
     };
 
     fetch('/register', {
