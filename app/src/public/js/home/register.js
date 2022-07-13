@@ -15,7 +15,7 @@ function register() {
         password: password.value,
         confirmPassword: confirmPassword.value,
     };
-    
+
     fetch('/register', {
         method: 'POST',
         headers: {
@@ -26,12 +26,12 @@ function register() {
     .then((res) => res.json())
     .then((res) => {
         if (res.success) {
-            location.href = '/';
+            location.href = '/login';
         } else {
             alert(res.msg);
         }
     })
     .catch((err) => {
-        console.error(new Error('로그인 도중 에러 발생!'));
+        console.error(new Error('회원가입 도중 에러 발생!'));
     });
 }
