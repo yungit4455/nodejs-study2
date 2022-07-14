@@ -24,10 +24,15 @@ class User {
         return { success: false, msg: '존재하지 않는 아이디입니다.' };
     }
 
-    register() {
+   async register() {
         const client = this.body;
-        const response = UserStorage.save(client);
-        return response;
+        // async await의 에러처리는 try catch를 사용한다.
+        try {
+            const response = await UserStorage.save(client);
+            return response;
+        } catch (err) {
+            return { success: false, msg: err };
+        }
     }
 }
 

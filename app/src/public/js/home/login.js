@@ -2,9 +2,9 @@
 
 const id = document.querySelector('#id');
 const password = document.querySelector('#password');
-const loginBtn = document.querySelector('button');
+const loginForm = document.querySelector('.login-form');
 
-loginBtn.addEventListener('click', login);
+loginForm.addEventListener('submit', login);
 
 function login(event) {
     event.preventDefault();

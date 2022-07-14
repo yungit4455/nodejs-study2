@@ -4,9 +4,9 @@ const id = document.querySelector('#id');
 const name = document.querySelector('#name');
 const password = document.querySelector('#password');
 const confirmPassword = document.querySelector('#confirm-password');
-const registerBtn = document.querySelector('button');
+const registerForm = document.querySelector('.register-form');
 
-registerBtn.addEventListener('click', register);
+registerForm.addEventListener('submit', register);
 
 function register(event) {
     event.preventDefault();
