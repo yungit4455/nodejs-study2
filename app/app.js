@@ -2,10 +2,13 @@
 
 // 모듈
 const express = require('express');
-const app = express();
 const dotenv = require('dotenv');
+const morgan = require('morgan');
+
+const app = express();
 dotenv.config();
 
+const accessLogStream = require('./src/config/log');
 // 라우팅
 const home = require('./src/routes/home');
 
@@ -16,6 +19,8 @@ app.use(express.static(`${__dirname}/src/public`));
 app.use(express.json());
 // URL을 통해 전달되는 데이터에 한글, 공백 같은 문자가 포함될 경우 제대로 인식되지 않는 문제 해결
 app.use(express.urlencoded({ extended: true }));
+app.use(morgan('dev')); // 콘솔에 출력하는 로그
+app.use(morgan('common', { stream: accessLogStream })); // 파일에 저장하는 로그
 
 app.use('/', home); // use -> middleware를 등록하는 method
 
