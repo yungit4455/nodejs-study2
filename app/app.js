@@ -8,9 +8,12 @@ const morgan = require('morgan');
 const app = express();
 dotenv.config();
 
-const accessLogStream = require('./src/config/log');
+const accessLogStream = require('./src/config/log'); // 로그 관리: morgan
+// const logger = require('./src/config/logger'); // 로그 관리: winston
+
 // 라우팅
 const home = require('./src/routes/home');
+
 
 // 앱 세팅
 app.set('views', './src/views');
