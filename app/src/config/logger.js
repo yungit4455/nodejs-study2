@@ -27,7 +27,7 @@ const printLogFormat = {
 
 const opts = {
     file: new transports.File({
-        filename: 'access2.log',
+        filename: 'access.log',
         dirname: './logs',
         level: 'info',
         format: printLogFormat.file,
@@ -46,6 +46,10 @@ const logger = createLogger({
 
 if (process.env.NODE_ENV !== 'production') {
     logger.add(opts.console);
+}
+
+logger.stream = {
+    write: (message) => logger.info(message),
 }
 
 module.exports = logger;

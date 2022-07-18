@@ -8,6 +8,7 @@ loginForm.addEventListener('submit', login);
 
 function login(event) {
     event.preventDefault();
+
     const req = {
         id: id.value,
         password: password.value,
@@ -29,6 +30,7 @@ function login(event) {
         if (res.success) {
             location.href = '/';
         } else {
+            if (res.err) return alert(res.err);
             alert(res.msg);
         }
     })

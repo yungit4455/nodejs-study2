@@ -24,7 +24,8 @@ class User {
             }
             return { success: false, msg: '존재하지 않는 아이디입니다.' };
         } catch (err) {
-            return { success: false, msg: err };
+            // { success: false, err: err } key와 value가 같으면 key만 입력해도 된다.
+            return { success: false, err };
         }
     }
 
@@ -35,7 +36,7 @@ class User {
             const response = await UserStorage.save(client);
             return response;
         } catch (err) {
-            return { success: false, msg: err };
+            return { success: false, err };
         }
     }
 }
