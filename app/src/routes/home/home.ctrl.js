@@ -44,7 +44,7 @@ const process = {
         const url = {
             method: 'POST',
             path: '/register',
-            status: response.err ? 400 : 201,
+            status: response.err ? 409 : 201, // 201: 새로운 데이터 생성을 성공함 / 409: Conflict 원래는 500번대를 반환하는게 맞음
         };
 
         log(response, url);
