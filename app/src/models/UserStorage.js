@@ -1,7 +1,7 @@
 'use strict';
 
 const db = require('../config/db');
-
+// Test ddddd
 class UserStorage {
     static getUserInfo(id) {
         // fs는 자체적으로 Promise를 지원하지만 mysql은 미지원이라 직접 만들어야 한다.
