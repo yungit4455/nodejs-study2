@@ -1,7 +1,9 @@
 'use strict';
 
 const db = require('../config/db');
-// Test ddddd
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 class UserStorage {
     static getUserInfo(id) {
         // fs는 자체적으로 Promise를 지원하지만 mysql은 미지원이라 직접 만들어야 한다.
@@ -15,11 +17,14 @@ class UserStorage {
     }
 
     static async save(userInfo) {
-        return new Promise((resolve, reject) => {
-            const query = 'INSERT INTO users(id, name, password) VALUES(?, ?, ?);';
-            db.query(query, [userInfo.id, userInfo.name, userInfo.password], (err) => {
-                if (err) reject(`${err}`);
-                else resolve({ success: true });
+        return bcrypt.hash(userInfo.password, saltRounds).then((hash) => {
+            console.log(`DB PW: ${hash}`);
+            return new Promise((resolve, reject) => {
+                const query = 'INSERT INTO users(id, name, password) VALUES(?, ?, ?);';
+                db.query(query, [userInfo.id, userInfo.name, hash], (err) => {
+                    if (err) reject(`${err}`);
+                    else resolve({ success: true });
+                });
             });
         });
     }
