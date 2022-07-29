@@ -18,7 +18,6 @@ class UserStorage {
 
     static async save(userInfo) {
         return bcrypt.hash(userInfo.password, saltRounds).then((hash) => {
-            console.log(`DB PW: ${hash}`);
             return new Promise((resolve, reject) => {
                 const query = 'INSERT INTO users(id, name, password) VALUES(?, ?, ?);';
                 db.query(query, [userInfo.id, userInfo.name, hash], (err) => {
